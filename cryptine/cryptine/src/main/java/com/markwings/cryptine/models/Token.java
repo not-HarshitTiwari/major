@@ -1,6 +1,5 @@
 package com.markwings.cryptine.models;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -35,7 +34,7 @@ public class Token {
 
     private String tokenImgType;
 
-    @JsonFormat(shape= JsonFormat.Shape.STRING,pattern = "dd-MM-yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date listedOn;
 
     public int getId() {

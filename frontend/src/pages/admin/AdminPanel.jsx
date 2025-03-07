@@ -42,7 +42,7 @@ function AdminPanel() {
         id="actions"
         className="bg-primary-light w-full min-h-screen h-fit flex justify-center"
       >
-        <div className="w-full pl-64 ">
+        <div className="w-full pl-64 dark:bg-primary-dark">
           <Outlet />
         </div>
       </div>

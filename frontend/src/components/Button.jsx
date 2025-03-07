@@ -6,7 +6,7 @@ function Button({value = "Button",
   ...rest
 }) {
   return (
-    <div className='w-full'>
+    <div className='w-full flex justify-center'>
       <button
         type={type}
         className={`border-2 border-gray-200 rounded-md p-2 hover:bg-blue-800 ${className}`}

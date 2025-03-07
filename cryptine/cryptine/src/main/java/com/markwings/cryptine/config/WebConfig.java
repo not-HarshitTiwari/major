@@ -1,3 +1,5 @@
+package com.markwings.cryptine.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -12,9 +14,9 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
                         .allowedOrigins("http://localhost:5173")
-                        .allowedMethods("POST", "GET", "PUT", "DELETE")
-                        .allowCredentials(true)
-                        .allowedHeaders("*");
+                    .allowedMethods("POST", "GET", "PUT", "DELETE","OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }

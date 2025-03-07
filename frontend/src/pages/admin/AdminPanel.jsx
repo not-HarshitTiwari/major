@@ -1,25 +1,22 @@
 import React from "react";
-import { useState } from "react";
-import AddToken from "./AddToken/";
-import AdminTokenList from "./AdminTokenList/";
+import {Outlet, useNavigate} from "react-router";
 import { RiAddBoxFill, RiAdminFill, RiFileList2Fill } from "@remixicon/react";
 
 function AdminPanel() {
-  const [idx, setIdx] = useState(0);
-  const [component, setComponent] = useState();
+  const navigate = useNavigate();
   const controlsCSS =
-    "flex items-center justify-center pb-4 min-w-full min-h-36 border-[0.01px] border-gray-800 bg-primary-light rounded-xl ";
-
+    "flex items-center justify-center pb-4 min-w-full min-h-36 border-[0.01px] border-gray-800 bg-primary-light rounded-xl dark:bg-primary-dark dark:text-primary-text-dark";
+  
   return (
-    <div>
+    <div className="flex">
       <div
         id="controls"
-        className="min-w-40 h-[681px] max-h-screen absolute gap-[30px] p-1 bg-secondary-light text-gray-900 text-9xl flex flex-col items-center justify-between"
+        className="w-40 h-screen fixed left-0 top-0 gap-[30px] px-4 pt-24 pb-12 text-9xl flex flex-col items-center justify-between bg-secondary-light text-gray-900 dark:bg-secondary-dark"
       >
         <div
           id="0"
           onClick={() => {
-            setComponent(<AdminTokenList />);
+            navigate("./")
           }}
           className={controlsCSS}
         >
@@ -28,7 +25,7 @@ function AdminPanel() {
         <div
           id="1"
           onClick={() => {
-            setComponent(<AddToken />);
+            navigate("./add-token")
           }}
           className={controlsCSS}
         >
@@ -45,7 +42,9 @@ function AdminPanel() {
         id="actions"
         className="bg-primary-light w-full min-h-screen h-fit flex justify-center"
       >
-        <div className="w-full pl-64 ">{component}</div>
+        <div className="w-full pl-64 ">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

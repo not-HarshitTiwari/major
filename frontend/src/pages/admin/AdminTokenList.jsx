@@ -6,7 +6,7 @@ import axios from "axios";
 function AdminTokenList() {
   const [tokens, setTokens] = useState();
   const headerCss =
-    "text-2xl p-1 font-semibold text-center border-1 bg-secondary-light dark:bg-secondary-dark text-primary-text-light dark:text-primary-text-dark";
+    "text-2xl p-1  min-w-fit font-semibold text-center border-1 bg-secondary-light dark:bg-secondary-dark text-primary-text-light dark:text-primary-text-dark";
 
   async function fetchTokens() {
     await axios
@@ -26,7 +26,8 @@ function AdminTokenList() {
 
   return (
     <div>
-      <div id="tokenCard" className="grid grid-cols-7 gap-8 w-fit h-fit p-4">
+      <div id="tokenCard" className="grid grid-cols-8 text-nowrap gap-4 w-fit h-fit p-4">
+        <h1 className={headerCss}>ID</h1>
         <h1 className={headerCss}>Image</h1>
         <h1 className={headerCss}>Token Name</h1>
         <h1 className={`flex justify-center ${headerCss}`}>
@@ -49,7 +50,7 @@ function AdminTokenList() {
             upVote={token.upVotes}
             downVote={token.downVotes}
             link={tokens.link}
-            className="grid grid-cols-7 gap-8 w-fit h-fit p-4"
+            className="grid grid-cols-8 gap-4 w-fit h-fit p-4"
           />
         ))}
       </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../Button'
+import {useNavigate} from "react-router"
 import { RiPencilFill, RiDeleteBin5Fill, RiLink } from "@remixicon/react";
 import axios from 'axios';
 
@@ -13,9 +14,12 @@ function ListCard({
   className = ''
 
 }) {
+  const updateToken = () => {
+    navigate("./update-token/")
+  }
   const deleteToken = async () => {
     try {      
-      await axios.delete(`http://localhost:8080/api/deleteToken?id=${id}`);
+      await axios.delete(`http://localhost:8080/api/deleteToken/${id}`);
       console.log('Token deleted');
     } catch (error) {
       console.error('Error deleting token', error);
@@ -26,6 +30,7 @@ function ListCard({
         id={id}
         className={`w-full h-fit text-[18px] bg-[#f4f4f4] border-1 rounded-3xl border-black ${className}`}
       >
+        <h1 className='pointer-events-none'>{id}</h1>
         <img
           src={`data:image/jpeg;base64,${img}`}
           alt={name}
@@ -39,6 +44,7 @@ function ListCard({
         </a>
         <Button
           value={<RiPencilFill color="white" />}
+          onClick = {updateToken}
           className="bg-green-600 hover:bg-green-700"
         />
         <Button

@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @RequestMapping("/api")
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class TokensController {
 
     private TokenServices tokenServices;
@@ -48,8 +48,6 @@ public class TokensController {
 
     @PostMapping(path = "/addToken",consumes = {"multipart/form-data"})
     public ResponseEntity<Token> addToken(@ModelAttribute Token token, @RequestPart MultipartFile image) throws IOException {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        Token token = objectMapper.readValue(tokenJSON, Token.class);
         tokenServices.addToken(token,image);
         Token t = tokenServices.getTokenById(token.getId());
         if(t!=null) return new ResponseEntity<>(t,HttpStatus.OK);
@@ -64,8 +62,7 @@ public class TokensController {
     }
 
     @DeleteMapping("/deleteToken/{id}")
-    public ResponseEntity<Boolean> deleteToken(@RequestParam int id){
-//        boolean deleted = tokenServices.deleteToken(tokenDTO.getId());
+    public ResponseEntity<Boolean> deleteToken(@PathVariable int id){
         boolean deleted=tokenServices.deleteToken(id);
 
         if (deleted){
